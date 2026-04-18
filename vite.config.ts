@@ -5,6 +5,6 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   // For GitHub Pages (project pages), set VITE_BASE to "/<repo>/".
   // For a custom domain or user pages, keep it as "/".
-  base: process.env.VITE_BASE || '/',
+  base: process.env.VITE_BASE || '/Site/',
   plugins: [react()],
 })
