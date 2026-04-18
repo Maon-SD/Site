@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FiArrowLeft, FiMenu, FiX } from 'react-icons/fi';
 import styles from './Navbar.module.css';
+import logo from '../assets/A_logo.png';
 
 type NavItem = { id: string; label: string };
 
@@ -71,7 +72,7 @@ export function Navbar() {
           )}
 
           <button className={styles.brand} onClick={() => onNav('about')} aria-label="Go to top">
-            <img className={styles.logo} src="/A_logo.png" alt="A Logo" />
+            <img className={styles.logo} src={logo} alt="A Logo" />
             <span>Noam — Portfolio</span>
           </button>
         </div>
