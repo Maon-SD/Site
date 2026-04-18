@@ -1,0 +1,37 @@
+:root {
+  /* Palette fournie */
+  --c-285aa4: #285AA4;
+  --c-1a2e4c: #1A2E4C;
+  --c-5481ca: #5481CA;
+  --c-7fa7f0: #7FA7F0;
+
+  /* Tokens sémantiques */
+  --bg: #0b1424;
+  --surface: #0f2039;
+  --surface-2: #122a4c;
+  --text: #eef4ff;
+  --muted: rgba(238, 244, 255, 0.72);
+  --border: rgba(127, 167, 240, 0.22);
+
+  --primary: var(--c-7fa7f0);
+  --primary-2: var(--c-5481ca);
+  --accent: var(--c-285aa4);
+  --nav: rgba(15, 32, 57, 0.75);
+
+  --shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+  --radius: 18px;
+  --radius-sm: 12px;
+
+  /* Layout: keep ~5cm empty on each side on large screens */
+  --container: 100%;
+  --gutter: 20px;
+
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    /* on conserve un thème sombre cohérent, même en light mode */
+  }
+}
+

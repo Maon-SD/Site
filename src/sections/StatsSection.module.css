@@ -1,0 +1,39 @@
+.grid {
+  margin-top: 18px;
+  display: grid;
+  gap: 16px;
+  /* Auto-size columns based on number of stats */
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+
+@media (min-width: 980px) {
+  /* Force single row on large screens */
+  .grid {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-template-columns: none;
+  }
+}
+
+.stat {
+  padding: 18px;
+}
+
+.value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+.label {
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+.hint {
+  margin-top: 8px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+

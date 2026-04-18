@@ -1,0 +1,140 @@
+.aboutCard {
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+}
+
+.photoWrap {
+  position: relative;
+  min-height: 240px;
+  background: rgba(15, 32, 57, 0.45);
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Fade-out on the right side of the image */
+.photoFade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(11, 20, 36, 0.00) 0%,
+    rgba(11, 20, 36, 0.10) 55%,
+    rgba(11, 20, 36, 0.85) 88%,
+    rgba(11, 20, 36, 1.00) 100%
+  );
+}
+
+.content {
+  padding: 18px;
+}
+
+.title {
+  margin: 14px 0 10px;
+  font-size: clamp(2rem, 1.2rem + 2.2vw, 3.1rem);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.subTitle {
+  margin: 18px 0 8px;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+
+.lead {
+  margin: 0;
+  max-width: 75ch;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.paragraph {
+  margin: 0;
+  max-width: 80ch;
+  color: rgba(238, 244, 255, 0.68);
+  line-height: 1.7;
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.secondary {
+  color: var(--primary);
+  padding: 12px 10px;
+}
+
+.secondary:hover {
+  text-decoration: underline;
+}
+
+.highlights {
+  margin-top: 22px;
+  display: grid;
+  gap: 12px;
+}
+
+.highlight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(127, 167, 240, 0.20);
+  background: rgba(15, 32, 57, 0.38);
+}
+
+.highlight svg {
+  width: 20px;
+  height: 20px;
+  color: var(--primary);
+}
+
+.hTitle {
+  font-weight: 700;
+}
+
+.hText {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.tip {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(127, 167, 240, 0.16);
+  color: rgba(238, 244, 255, 0.58);
+  font-size: 0.95rem;
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: 0.95fr 1.05fr;
+    align-items: stretch;
+  }
+
+  .photoWrap {
+    min-height: 520px;
+  }
+
+  .content {
+    padding: 22px;
+  }
+
+  .highlights {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+

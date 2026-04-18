@@ -1,0 +1,54 @@
+.wrap {
+  position: relative;
+}
+
+.trigger {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  padding: 10px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.trigger:hover {
+  color: var(--text);
+  background: rgba(127, 167, 240, 0.10);
+}
+
+.open .trigger {
+  color: var(--text);
+  background: rgba(127, 167, 240, 0.16);
+  border: 1px solid rgba(127, 167, 240, 0.22);
+}
+
+.menu {
+  position: absolute;
+  top: 46px;
+  right: 0;
+  min-width: 180px;
+  border-radius: 16px;
+  border: 1px solid rgba(127, 167, 240, 0.22);
+  background: rgba(15, 32, 57, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+  padding: 8px;
+  display: grid;
+  gap: 6px;
+}
+
+.item {
+  padding: 10px 12px;
+  border-radius: 12px;
+  color: rgba(238, 244, 255, 0.82);
+}
+
+.item:hover {
+  background: rgba(127, 167, 240, 0.12);
+  color: var(--text);
+}
+
+.hoverArea {
+  position: relative;
+}

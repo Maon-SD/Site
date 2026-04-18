@@ -1,0 +1,247 @@
+.wrap {
+  display: grid;
+  gap: 18px;
+}
+
+/* 3-panel carousel like the reference */
+.stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.viewport {
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  /* space reserved for side previews inside the carousel */
+  padding: 0;
+}
+
+.track {
+  display: grid;
+  grid-auto-flow: column;
+  /* Each slide is narrower than the viewport so side slides remain visible */
+  grid-auto-columns: 72%;
+  justify-content: center;
+  align-items: center;
+  gap: 34px;
+  transition: transform 420ms cubic-bezier(.2,.9,.2,1);
+  will-change: transform;
+}
+
+.panel {
+  padding: 0;
+}
+
+.panelInner {
+  border-radius: 22px;
+  border: 1px solid rgba(127, 167, 240, 0.18);
+  background: rgba(15, 32, 57, 0.40);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transform: scale(0.92);
+  opacity: 0.55;
+  filter: saturate(0.9);
+}
+
+.panelCenter .panelInner {
+  transform: scale(1);
+  opacity: 1;
+  border-color: rgba(127, 167, 240, 0.45);
+  background: linear-gradient(180deg, rgba(18, 42, 76, 0.70), rgba(15, 32, 57, 0.70));
+}
+
+.panelGrid {
+  display: grid;
+  gap: 14px;
+  padding: 20px;
+  min-height: 420px;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.14rem;
+  letter-spacing: -0.02em;
+}
+
+.desc {
+  margin: 10px 0 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.images {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.imageButton {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+.imageButton:focus-visible {
+  outline: 2px solid rgba(127, 167, 240, 0.75);
+  outline-offset: 2px;
+}
+
+.image {
+  border-radius: 14px;
+  border: 1px solid rgba(127, 167, 240, 0.16);
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: rgba(15, 32, 57, 0.35);
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(6, 10, 18, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: grid;
+  place-items: center;
+  padding: 18px;
+}
+
+.lightboxInner {
+  position: relative;
+  width: min(1100px, 96vw);
+  max-height: 86vh;
+  border-radius: 18px;
+  border: 1px solid rgba(127, 167, 240, 0.25);
+  background: rgba(15, 32, 57, 0.72);
+  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+}
+
+.lightboxImage {
+  width: 100%;
+  height: 100%;
+  max-height: 86vh;
+  object-fit: contain;
+  display: block;
+  background: rgba(11, 20, 36, 0.65);
+}
+
+.lightboxClose {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(127, 167, 240, 0.24);
+  background: rgba(15, 32, 57, 0.7);
+  color: var(--text);
+  cursor: pointer;
+  line-height: 1;
+  font-size: 26px;
+}
+
+.lightboxClose:hover {
+  border-color: rgba(127, 167, 240, 0.55);
+}
+
+.rightCol {
+  display: grid;
+  align-content: start;
+}
+
+.leftCol {
+  display: grid;
+  align-content: start;
+}
+
+/* Side previews: keep them lightweight */
+.panel:not(.panelCenter) .desc,
+.panel:not(.panelCenter) .images {
+  display: none;
+}
+
+.panel:not(.panelCenter) .panelGrid {
+  padding: 10px;
+}
+
+.panel:not(.panelCenter) .title {
+  font-size: 1rem;
+}
+
+@media (min-width: 980px) {
+  .panelGrid {
+    grid-template-columns: 1.1fr 1fr;
+    align-items: start;
+    gap: 18px;
+    padding: 18px;
+  }
+}
+
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 60px;
+  height: 60px;
+  border-radius: 999px;
+  border: 1px solid rgba(127, 167, 240, 0.26);
+  background: rgba(15, 32, 57, 0.66);
+  color: var(--text);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navButton:hover {
+  border-color: rgba(127, 167, 240, 0.6);
+}
+
+.navLeft { left: 18px; }
+.navRight { right: 18px; }
+
+@media (min-width: 900px) {
+  .track {
+    grid-auto-columns: 66%;
+    gap: 44px;
+  }
+  .navLeft { left: 24px; }
+  .navRight { right: 24px; }
+}
+
+/* rendre les previews cliquables sans interaction iframe: on garde la preview visuelle, mais on désactive les events uniquement sur l’iframe/vidéo à l’intérieur des panels non-centre et on re-permet le clic sur le panel. */
+.panel:not(.panelCenter) {
+  opacity: 0.78;
+  filter: saturate(0.85);
+}
+
+.panel:not(.panelCenter) :global(iframe),
+.panel:not(.panelCenter) :global(video) {
+  pointer-events: none;
+}
+
+.panelCenter {
+  cursor: default;
+}
+
+.panel {
+  cursor: pointer;
+}
+
+.navButton svg {
+  width: 22px;
+  height: 22px;
+}
